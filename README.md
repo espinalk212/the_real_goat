@@ -7,6 +7,12 @@ There has been debates between basketball fans for years now in regards to who i
 
 
 ### Functionality and MVPs
+- landing page
+
+- chart
+
+-
+
 
 
 
@@ -18,14 +24,33 @@ There has been debates between basketball fans for years now in regards to who i
 
 ### Architecture and Technology
 
+JS, CSS, Webpack, D3
+
 https://www.balldontlie.io/#introduction for regular season comparisons.
 
 https://any-api.com/nba_com/nba_com/docs/API_Description for post season comparisons.
 
-https://app.datafire.io/projects/sample/overview/readme for use with NBA Stats api.
+
+### Implementation Timeline
+Day 1:
 
 
-### Implementation Timeline 
+Day 2:
+
+
+Day 3:
+
+
+
+Day 4:
+
+
+
+Day 5:
+
+
+
+### Basic File Structure
 
 
 
