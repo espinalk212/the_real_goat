@@ -1,0 +1,75 @@
+.app {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: royalblue;
+}
+
+.navBar {
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+    height: 60px;
+    width: 100%;
+    margin:5px
+
+}
+
+.leftNav {
+    display: block;
+    float: left;
+    border: 2px solid black;
+    width: 80px;
+
+}
+
+.title {
+    text-align: center;
+    color: white;
+    font-size: 50px;
+}
+
+.rightNav {
+    display: block;
+    float: right;
+    border: 2px solid black;
+    width: 80px;
+
+}
+
+.content {
+    display: block;
+    margin: 20px;
+    height: 60px;
+    width: 100%;
+    color: white;
+}
+
+.main {
+    width: 100%;
+    padding: 10px;
+    justify-content: space-between;
+    
+}
+
+.button {
+    display: flex;
+    height: 100%;
+    width: 15%;
+    margin-right: 5px;
+    float: left;
+    border: 2px solid black;
+}
+
+
+#d3-container {
+    display: flex;
+    background-color: grey;
+    border: 2px solid black;
+}
+
+.rect:hover {
+    color: royalblue;
+}
+
