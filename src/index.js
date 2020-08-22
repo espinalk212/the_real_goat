@@ -1,7 +1,4 @@
 import "./styles/index.scss";
-import * as d3 from 'd3';
-import Chart from './scripts/chart';
-import LebronStats from './playerStats/lebron_season_stats.json';
 import Main from './scripts/main';
 
 
