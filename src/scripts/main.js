@@ -4,27 +4,38 @@ import LebronStats from '../playerStats/lebron_season_stats.json'
 
 class Main {
   constructor() {
-    this.chart = new Chart(LebronStats.data)
+    this.chart = new Chart(this.seasonAvg(LebronStats.data))
+    this.seasonAvg = this.seasonAvg.bind(this);
   }
 
-  season(yr) { 
-    return dataset.data.filter(game => {
-      return game.season === yr
+  // season(yr) { 
+  //   return dataset.data.filter(game => {
+  //     return game.season === yr
+  //   })
+  // }
+
+  seasonAvg(arrayObj) {
+    let totalSum = [];
+    Object.values(arrayObj).map(season => {
+      let sum = 0
+      const seasons = Object.values(season).map(game => { 
+        if (game.pts !== null) {
+        return sum += game.pts
+        }
+      })
+   
+      return totalSum.push(Math.floor((sum/ seasons.length)));
     })
+    return totalSum
   }
 
-  seasonAvg(season, category) { 
-    season.map(game => {
-      return game.category === category
-    })
-    // .reduce(function (a + b) { 
-    //   return a + b }) / season.length
 
-  }
+
   
   
 
 }
+  // document.addEventListener(onmouseover, () => {})
 
 export default Main;
 

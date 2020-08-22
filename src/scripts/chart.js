@@ -16,15 +16,15 @@ class Chart {
     
 
     this.x = d3.scaleBand()
-      .domain(d3.range(Object.keys(dataset).length))
+      .domain(d3.range(dataset.length))
       .range([this.margin.left, this.width - this.margin.right])
       .padding(0.1)
 
-    this.y = d3.scaleLinear()
+    this.y = d3
+      .scaleLinear()
       .domain([0, 70])
-      .range([this.height - this.margin.bottom, this.margin.top])
-
-      debugger;
+      .range([this.height - this.margin.bottom, this.margin.top]);
+    
     this.svg
       .append('g')
       .attr('fill', 'orange')
@@ -32,14 +32,14 @@ class Chart {
       .data(dataset)
       .join('rect')
         .attr('x', (d, i) => this.x(i))
-      .attr('y', (d, i) => this.y(d[`season${i}`][0].pts))
-        .attr('height', (d, i) => this.y(0) - this.y(Object.keys(d)[i][0].pts))
+        .attr('y', d => this.y(d))
+        .attr('height', (d,i) => this.y(0) - this.y(d))
         .attr('width', this.x.bandwidth())
         .attr('class', 'rect')
         
     this.xAxis = (g) => {
       g.attr('transform', `translate(0, ${this.height - this.margin.bottom})`)
-      .call(d3.axisBottom(this.x).tickFormat(i => Object.keys(dataset)[i]))
+      .call(d3.axisBottom(this.x).tickFormat(i => `season${[i + 1]}`))
       .attr('font-size','12px')
     }
 
@@ -54,7 +54,7 @@ class Chart {
     this.svg.node()
   }
   
-  
+
   
 
 
