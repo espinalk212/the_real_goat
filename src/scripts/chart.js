@@ -28,7 +28,7 @@ class Chart {
     
     this.svg
       .append('g')
-      .attr('fill', 'orange')
+      .attr('fill', 'blue')
       .selectAll('lebron rect')
       .data(dataset1)
       .join('rect')
@@ -40,7 +40,7 @@ class Chart {
 
     this.svg
       .append('g')
-      .attr('fill', 'blue')
+      .attr('fill', 'orange')
       .selectAll('mj-rect')
       .data(dataset2)
       .join('rect')

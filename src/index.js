@@ -7,7 +7,6 @@ document.addEventListener("DOMContentLoaded", () => {
   let dropdownOption = "pts"
   const main = document.getElementById("main");
   let content = new Main(dropdownOption);
-  //main(dropdownOption)
   const dropdown = document.getElementById("category").onchange = function(){
     dropdownOption = this.value
     document.getElementById('d3-container').innerHTML = ''
