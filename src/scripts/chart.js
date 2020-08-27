@@ -3,7 +3,7 @@ import { svg } from 'd3';
 
 
 class Chart {
-  constructor(dataset) {
+  constructor(dataset1, dataset2) {
     this.width = 1300;
     this.height = 600;
     this.margin = { top: 20, bottom: 20, right: 20, left: 35 }
@@ -16,7 +16,7 @@ class Chart {
     
 
     this.x = d3.scaleBand()
-      .domain(d3.range(dataset.length))
+      .domain(d3.range(dataset1.length))
       .range([this.margin.left, this.width - this.margin.right])
       .padding(0.1)
 
@@ -28,24 +28,36 @@ class Chart {
     this.svg
       .append('g')
       .attr('fill', 'orange')
-      .selectAll('rect')
-      .data(dataset)
+      .selectAll('lebron rect')
+      .data(dataset1)
       .join('rect')
         .attr('x', (d, i) => this.x(i))
         .attr('y', d => this.y(d))
         .attr('height', (d,i) => this.y(0) - this.y(d))
         .attr('width', this.x.bandwidth())
-        .attr('class', 'rect')
+        .attr('class', 'lebron rect')
+
+    this.svg
+      .append('g')
+      .attr('fill', 'blue')
+      .selectAll('mj rect')
+      .data(dataset2)
+      .join('rect')
+        .attr('x', (d, i) => this.x(i))
+        .attr('y', d => this.y(d))
+        .attr('height', (d,i) => this.y(0) - this.y(d))
+        .attr('width', this.x.bandwidth())
+        .attr('class', 'mj rect')
         
     this.xAxis = (g) => {
       g.attr('transform', `translate(0, ${this.height - this.margin.bottom})`)
-      .call(d3.axisBottom(this.x).tickFormat(i => `season${[i + 1]}`))
+      .call(d3.axisBottom(this.x).tickFormat(i => `season ${[i + 1]}`))
       .attr('font-size','12px')
     }
 
     this.yAxis = (g) => {
       g.attr("transform", `translate(${this.margin.left}, 0)`)
-      .call(d3.axisLeft(this.y).ticks(null, dataset.format))
+      .call(d3.axisLeft(this.y).ticks(null, dataset1.format))
       .attr("font-size", "12px");
     };
 

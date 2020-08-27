@@ -1,10 +1,11 @@
 import * as d3 from 'd3';
 import Chart from './chart';
-import LebronStats from '../playerStats/lebron_season_stats.json'
+import LebronStats from '../playerStats/lebron_season_stats.json';
+import MichaelStats from '../playerStats/michael_season_stats.json';
 
 class Main {
   constructor() {
-    this.chart = new Chart(this.seasonAvg(LebronStats.data))
+    this.chart = new Chart(this.seasonAvg(LebronStats.data), this.seasonAvg(MichaelStats.data))
     this.seasonAvg = this.seasonAvg.bind(this);
   }
 
@@ -14,23 +15,35 @@ class Main {
   //   })
   // }
 
-  seasonAvg(arrayObj) {
-    let totalSum = [];
-    Object.values(arrayObj).map(season => {
-      let sum = 0
-      const seasons = Object.values(season).map(game => { 
-        if (game.pts !== null) {
-        return sum += game.pts
-        }
-      })
+  // seasonAvg(arrayObj) {
+  //   let totalSum = [];
+  //   Object.values(arrayObj).map(season => {
+  //     
+  //     let sum = 0
+  //     const seasons = Object.values(season).map(game => { 
+  //       if (game.ast !== null) {
+  //       return sum += game.ast
+  //       }
+  //     })
    
-      return totalSum.push(Math.floor((sum/ seasons.length)));
+  //     return totalSum.push(Math.floor((sum/ seasons.length)));
+  //   })
+  //   return totalSum
+  // }
+  seasonAvg(arrayObj) {
+    let sum = 0
+    Object.values(arrayObj).map((season, idx) => {
+      // debugger;
+      if (season[idx].pts !== null) {
+        return sum += season[idx].pts
+      }
+      const avg = (Math.floor(sum / season.length));
+      return avg
     })
-    return totalSum
   }
 
 
-
+  
   
   
 
@@ -54,4 +67,7 @@ export default Main;
 
 
 // create middle component 
-// pass click handlers and data to be filtered 
+// pass click handlers and data to be filtered
+
+
+
