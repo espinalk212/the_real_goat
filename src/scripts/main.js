@@ -1,11 +1,12 @@
-import * as d3 from 'd3';
 import Chart from './chart';
 import LebronStats from '../playerStats/lebron_season_stats.json';
 import MichaelStats from '../playerStats/michael_season_stats.json';
 
 class Main {
-  constructor() {
-    this.chart = new Chart(this.seasonAvg(LebronStats.data), this.seasonAvg(MichaelStats.data))
+  constructor(dropdownOption) {
+    this.chartHeightMax = 0
+    this.chart = new Chart(this.seasonAvg(LebronStats.data, dropdownOption), this.seasonAvg(MichaelStats.data, dropdownOption), this.chartHeightMax)
+    
     this.seasonAvg = this.seasonAvg.bind(this);
   }
 
@@ -15,32 +16,39 @@ class Main {
   //   })
   // }
 
-  // seasonAvg(arrayObj) {
-  //   let totalSum = [];
-  //   Object.values(arrayObj).map(season => {
-  //     
-  //     let sum = 0
-  //     const seasons = Object.values(season).map(game => { 
-  //       if (game.ast !== null) {
-  //       return sum += game.ast
-  //       }
-  //     })
-   
-  //     return totalSum.push(Math.floor((sum/ seasons.length)));
-  //   })
-  //   return totalSum
-  // }
-  seasonAvg(arrayObj) {
-    let sum = 0
-    Object.values(arrayObj).map((season, idx) => {
-      // debugger;
-      if (season[idx].pts !== null) {
-        return sum += season[idx].pts
+
+  seasonAvg(arrayObj, category) {
+    let totalSum = [];
+    Object.values(arrayObj).map(season => {
+      let sum = 0
+      const seasons = Object.values(season).map(game => { 
+        if (game[category] !== null) {
+          return sum += game[category]
+        }
+      })
+      if (this.chartHeightMax < Math.floor((sum / seasons.length))) {
+        this.chartHeightMax = Math.floor((sum / seasons.length))
       }
-      const avg = (Math.floor(sum / season.length));
-      return avg
+      return totalSum.push(Math.floor((sum/ seasons.length)));
     })
+    return totalSum
   }
+
+
+
+
+
+  // seasonAvg(arrayObj) {
+  //   let sum = 0
+  //   let seasons = Object.values(arrayObj).map((season, idx) => {
+  //     debugger;
+  //     if (season[idx].pts !== null) {
+  //       return sum += season[idx].pts
+  //     }
+  //   })
+  //   const avg = (Math.floor(sum / seasons.length));
+  //   return avg
+  // }
 
 
   

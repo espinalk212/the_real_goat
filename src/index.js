@@ -4,17 +4,17 @@ import Main from './scripts/main';
 
 
 document.addEventListener("DOMContentLoaded", () => {
+  let dropdownOption = "pts"
   const main = document.getElementById("main");
-  const content = new Main()
+  let content = new Main(dropdownOption);
+  //main(dropdownOption)
+  const dropdown = document.getElementById("category").onchange = function(){
+    dropdownOption = this.value
+    document.getElementById('d3-container').innerHTML = ''
+    content = new Main(dropdownOption)
+    
+  }
 
-
-  
-
-
-  
-
-
- 
 
   // fetch('https://www.balldontlie.io/api/v1/stats?start_date=1984-10-26&player_ids[]=2931&per_page=100&page=4')
   //   .then(

@@ -3,7 +3,7 @@ import { svg } from 'd3';
 
 
 class Chart {
-  constructor(dataset1, dataset2) {
+  constructor(dataset1, dataset2, chartHeightMax) {
     this.width = 1300;
     this.height = 600;
     this.margin = { top: 20, bottom: 20, right: 20, left: 35 }
@@ -20,9 +20,10 @@ class Chart {
       .range([this.margin.left, this.width - this.margin.right])
       .padding(0.1)
 
+
     this.y = d3
       .scaleLinear()
-      .domain([0, 70])
+      .domain([0, chartHeightMax])
       .range([this.height - this.margin.bottom, this.margin.top]);
     
     this.svg
@@ -33,21 +34,21 @@ class Chart {
       .join('rect')
         .attr('x', (d, i) => this.x(i))
         .attr('y', d => this.y(d))
-        .attr('height', (d,i) => this.y(0) - this.y(d))
+        .attr('height', (d, i) => this.y(0) - this.y(d))
         .attr('width', this.x.bandwidth())
         .attr('class', 'lebron rect')
 
     this.svg
       .append('g')
       .attr('fill', 'blue')
-      .selectAll('mj rect')
+      .selectAll('mj-rect')
       .data(dataset2)
       .join('rect')
         .attr('x', (d, i) => this.x(i))
         .attr('y', d => this.y(d))
-        .attr('height', (d,i) => this.y(0) - this.y(d))
+        .attr('height', (d, i) => this.y(0) - this.y(d))
         .attr('width', this.x.bandwidth())
-        .attr('class', 'mj rect')
+        .attr('class', 'mj-rect')
         
     this.xAxis = (g) => {
       g.attr('transform', `translate(0, ${this.height - this.margin.bottom})`)
