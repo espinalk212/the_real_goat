@@ -28,45 +28,65 @@ class Chart {
     
     this.svg
       .append('g')
-      .attr('fill', 'blue')
+      .attr('fill', 'purple')
       .selectAll('lebron rect')
       .data(dataset1)
       .join('rect')
         .attr('x', (d, i) => this.x(i))
         .attr('y', d => this.y(d))
         .attr('height', (d, i) => this.y(0) - this.y(d))
-        .attr('width', this.x.bandwidth())
+        .attr('width', this.x.bandwidth(2))
         .attr('class', 'lebron rect')
-
-    this.svg
-      .append('g')
-      .attr('fill', 'orange')
-      .selectAll('mj-rect')
-      .data(dataset2)
-      .join('rect')
+        
+        this.svg
+        .append('g')
+        .attr('fill', 'red')
+        .selectAll('mj-rect')
+        .data(dataset2)
+        .join('rect')
         .attr('x', (d, i) => this.x(i))
         .attr('y', d => this.y(d))
         .attr('height', (d, i) => this.y(0) - this.y(d))
         .attr('width', this.x.bandwidth())
         .attr('class', 'mj-rect')
+        .on('mouseover', function () {
+          d3.select(this)
+          .style("opacity", "0");
+          console.log(dataset2)
+        })
+        .on("mouseout", function () {
+          d3.select(this)
+            .style("opacity", "1.0")
+        });
         
-    this.xAxis = (g) => {
-      g.attr('transform', `translate(0, ${this.height - this.margin.bottom})`)
-      .call(d3.axisBottom(this.x).tickFormat(i => `season ${[i + 1]}`))
-      .attr('font-size','12px')
-    }
-
+        this.xAxis = (g) => {
+          g.attr('transform', `translate(0, ${this.height - this.margin.bottom})`)
+          .call(d3.axisBottom(this.x).tickFormat(i => `season ${[i + 1]}`))
+          .attr('font-size','12px')
+        }
+  
+        
+        
     this.yAxis = (g) => {
       g.attr("transform", `translate(${this.margin.left}, 0)`)
       .call(d3.axisLeft(this.y).ticks(null, dataset1.format))
       .attr("font-size", "12px");
     };
 
+    // this.svg
+    //   .on('mouseenter', function (actual, i) {
+    //     d3.select(this).attr('opacity', 0.5)
+    //   })
+    //   .on('mouseleave', function (actual, i) {
+    //     d3.select(this).attr('opacity', 1)
+    //   })
+
+   
+
     this.svg.append('g').call(this.xAxis)
     this.svg.append('g').call(this.yAxis)
     this.svg.node()
   }
-  
 
   
 

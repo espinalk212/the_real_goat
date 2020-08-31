@@ -8,55 +8,69 @@
   <link rel="stylesheet" href="./dist/main.css" />
   <link rel="stylesheet" href="./src/styles/index.scss" />
   <script src="https://d3js.org/d3.v4.min.js"></script>
-  <script src="https://use.fontawesome.com/releases/v5.14.0/js/all.js" data-auto-replace-svg></script>
+  <script src="https://use.fontawesome.com/releases/v5.14.0/js/all.js" ></script>
   <title>The Real Goat</title>
 </head>
 
 <body class='app'>
   
   <div class='navBar'>
-    <div class='leftNav'></div>
-    <div class='title' > 🐐The Real Goat 🐐</div>
-    <div class='rightNav'>
-      <ul>
-        <li><a href="https://github.com/espinalk212" class="icon fab fa-github"></a></li>
-        <li><a href="https://www.linkedin.com/in/kevinespinal212/" class="icon fab fa-linkedin"></a></li>
-        <li><a href="https://angel.co/u/kevin-espinal" class="icon fab fa-angellist"></a></li>
-        <li><a href="https://espinalk212.github.io/" class="icon fas fa-id-card"></a></li>
-      </ul>
-
-    </div>
-  </div>
-  <div id='main'>
-    <div class="content">
-      For the past decade basketball fans all over the world have debated whether it is Michael Jordan or LeBron James that should be considered the best basketball player to play the game. 
-      The aim here is to provide the stats in a visual way to better that conversation. Select a stat to graph averages over their careers. Men lie, women lie, numbers don't.
+    <div class='leftNav'>
+      <div class="key">
+        <i class="icon fas fa-key"></i>
+        <!-- <div class='key-dropdown'> -->
+          
+          <ul class="key-dropdown-menu">Key:
+          
+            <p class="mj">Michael Jordan</p>
+          
+            <p class="lj">Lebron James</p>
+          </ul>
+          <!-- </div> -->
+        </div>
+      </div>
+      
+      <div class='title' > 🐐 The Real Goat 🐐</div>
+      
+      <div class='rightNav'>
+        <ul>
+          <li><a href="https://github.com/espinalk212" ><i class="icon fab fa-github"></i></a></li>
+          <li><a href="https://www.linkedin.com/in/kevinespinal212/" ><i class="icon fab fa-linkedin"></i></a></li>
+          <li><a href="https://angel.co/u/kevin-espinal" ><i class="icon fab fa-angellist"></i></a></li>
+          <li><a href="https://espinalk212.github.io/" ><i class="icon fas fa-id-card"></i></a></li>
+        </ul>
+      </div>
     </div>
     
-    <div class='main-content'>
-      <div class='button'>
-        <form>
-          <label for="category">Select A Category:
-            <select name="category" id="category">
-              <option value="pts">Points</option>
-              <option value="ast">Assists</option>
-              <option value="fgm">Field Goals Made</option>
-              <option value="fga">Field Goals Attempted</option>
-              <option value="reb">Rebounds</option>
-              <option value="stl">Steals</option>
-              <!-- <option value="ft_pct">Field Goals Percentage</option> -->
+    <div id='main'>
+      <div class="content">
+        For the past decade basketball fans all over the world have debated whether it is Michael Jordan or LeBron James that should be considered the best basketball player to play the game. 
+        The aim here is to provide the stats in a visual way to better that conversation. Select a stat to graph averages over their careers. Men lie, women lie, numbers don't.
+      </div>
+      
+      <div class='main-content'>
+        <div class='button'>
+          <form>
+            <label for="category">Select A Category:
+              <select name="category" id="category">
+                <option value="pts">Points</option>
+                <option value="ast">Assists</option>
+                <option value="fgm">Field Goals Made</option>
+                <option value="fg3m">3 Pointers Made</option>
+                <option value="reb">Rebounds</option>
+                <option value="stl">Steals</option>
+                <option value="turnover">Turnovers</option>
               </select>
             </label>
           </form>
+        </div>
+        <div id='d3-container'></div>
       </div>
-      <div id='d3-container'></div>
-    </div>
-    <div class="credit">
-      source: <a href="https://www.balldontlie.io/#introduction">BallDontLie API</a>
+      <div class="credit">
+        source: <a href="https://www.balldontlie.io/#introduction">BallDontLie API</a>
+      </div>
     </div>
     
-  </div>
-  
-  <script src="./dist/main.js"></script>
+    <script src="./dist/main.js"></script>
 </body>
 </html>
