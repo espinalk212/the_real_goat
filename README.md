@@ -54,4 +54,7 @@ Day 5:
 
 
 
-### (Bonus Features) 
+### (Bonus Features)
+
+![image](https://github.com/espinalk212/the_real_goat/issues/1#issuecomment-684175744)
+
