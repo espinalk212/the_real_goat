@@ -38,25 +38,13 @@ class Main {
 
 
 
-  // seasonAvg(arrayObj) {
-  //   let sum = 0
-  //   let seasons = Object.values(arrayObj).map((season, idx) => {
-  //     debugger;
-  //     if (season[idx].pts !== null) {
-  //       return sum += season[idx].pts
-  //     }
-  //   })
-  //   const avg = (Math.floor(sum / seasons.length));
-  //   return avg
-  // }
-
 
   
   
   
 
 }
-  // document.addEventListener(onmouseover, () => {})
+
 
 export default Main;
 
@@ -69,13 +57,10 @@ export default Main;
 
 
 
-// this will allow to create a dropdown that allows the user to select based on category(pts, ast etc)
-
-//next step is implementing Michael Jordan's stats in the bar chart
 
 
-// create middle component 
-// pass click handlers and data to be filtered
+
+
 
 
 

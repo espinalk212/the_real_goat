@@ -38,32 +38,32 @@ class Chart {
         .attr('width', this.x.bandwidth(2))
         .attr('class', 'lebron rect')
         
-        this.svg
-        .append('g')
-        .attr('fill', 'red')
-        .selectAll('mj-rect')
-        .data(dataset2)
-        .join('rect')
-        .attr('x', (d, i) => this.x(i))
-        .attr('y', d => this.y(d))
-        .attr('height', (d, i) => this.y(0) - this.y(d))
-        .attr('width', this.x.bandwidth())
-        .attr('class', 'mj-rect')
-        .on('mouseover', function () {
-          d3.select(this)
-          .style("opacity", "0");
-          console.log(dataset2)
-        })
-        .on("mouseout", function () {
-          d3.select(this)
-            .style("opacity", "1.0")
-        });
+    this.svg
+      .append('g')
+      .attr('fill', 'red')
+      .selectAll('mj-rect')
+      .data(dataset2)
+      .join('rect')
+      .attr('x', (d, i) => this.x(i))
+      .attr('y', d => this.y(d))
+      .attr('height', (d, i) => this.y(0) - this.y(d))
+      .attr('width', this.x.bandwidth())
+      .attr('class', 'mj-rect')
+      .on('mouseover', function () {
+        d3.select(this)
+        .style("opacity", "0");
+        console.log(dataset2)
+      })
+      .on("mouseout", function () {
+        d3.select(this)
+        .style("opacity", "1.0")
+      });
         
-        this.xAxis = (g) => {
-          g.attr('transform', `translate(0, ${this.height - this.margin.bottom})`)
-          .call(d3.axisBottom(this.x).tickFormat(i => `season ${[i + 1]}`))
-          .attr('font-size','12px')
-        }
+    this.xAxis = (g) => {
+      g.attr('transform', `translate(0, ${this.height - this.margin.bottom})`)
+        .call(d3.axisBottom(this.x).tickFormat(i => `season ${[i + 1]}`))
+        .attr('font-size','12px')
+      }
   
         
         
