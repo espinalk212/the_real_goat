@@ -27,37 +27,45 @@ class Chart {
       .range([this.height - this.margin.bottom, this.margin.top]);
     
     this.svg
-      .append('g')
-      .attr('fill', 'purple')
-      .selectAll('lebron rect')
+      .append("g")
+      .attr("fill", "purple")
+      .selectAll("lebron rect")
       .data(dataset1)
-      .join('rect')
-        .attr('x', (d, i) => this.x(i))
-        .attr('y', d => this.y(d))
-        .attr('height', (d, i) => this.y(0) - this.y(d))
-        .attr('width', this.x.bandwidth(2))
-        .attr('class', 'lebron rect')
+      .join("rect")
+      .attr("x", (d, i) => this.x(i))
+      .attr("y", (d) => this.y(d))
+      .attr("height", (d, i) => this.y(0) - this.y(d))
+      .attr("width", this.x.bandwidth(2))
+      .attr("class", "lebron rect")
+      .on("mouseover", function (d, i) {
+        d3.select(this).style("opacity", "0");
+        console.log(dataset1[i]);
+      })
+      .on("mouseout", function () {
+        d3.select(this).style("opacity", "1");
+      });
         
     this.svg
-      .append('g')
-      .attr('fill', 'red')
-      .selectAll('mj-rect')
+      .append("g")
+      .attr("fill", "red")
+      .selectAll("mj-rect")
       .data(dataset2)
-      .join('rect')
-      .attr('x', (d, i) => this.x(i))
-      .attr('y', d => this.y(d))
-      .attr('height', (d, i) => this.y(0) - this.y(d))
-      .attr('width', this.x.bandwidth())
-      .attr('class', 'mj-rect')
-      .on('mouseover', function () {
+      .join("rect")
+      .attr("x", (d, i) => this.x(i))
+      .attr("y", (d) => this.y(d))
+      .attr("height", (d, i) => this.y(0) - this.y(d))
+      .attr("width", this.x.bandwidth())
+      .attr("class", "mj-rect")
+      .on('mouseover', function (d, i) {
         d3.select(this)
         .style("opacity", "0");
-        console.log(dataset2)
+        console.log(dataset2[i])
       })
       .on("mouseout", function () {
         d3.select(this)
-        .style("opacity", "1.0")
+        .style("opacity", "1")
       });
+
         
     this.xAxis = (g) => {
       g.attr('transform', `translate(0, ${this.height - this.margin.bottom})`)
@@ -72,6 +80,12 @@ class Chart {
       .call(d3.axisLeft(this.y).ticks(null, dataset1.format))
       .attr("font-size", "12px");
     };
+
+
+    
+
+
+    
 
     // this.svg
     //   .on('mouseenter', function (actual, i) {
