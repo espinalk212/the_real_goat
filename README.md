@@ -7,13 +7,11 @@ There has been debates between basketball fans for years now in regards to who i
 
 
 ### Functionality and MVPs
-- landing page
+- Landing page
 
-- chart
+- D3.js Chart
 
--
-
-
+- Ability to compare regular season stats between Michael Jordan and LeBron James based on Points, Assists, Rebounds, and Turnovers
 
 
 
@@ -24,29 +22,28 @@ There has been debates between basketball fans for years now in regards to who i
 
 ### Architecture and Technology
 
-JS, CSS, Webpack, D3
+JS, CSS, Webpack, D3.js
 
 https://www.balldontlie.io/#introduction for regular season comparisons.
 
-https://any-api.com/nba_com/nba_com/docs/API_Description for post season comparisons.
 
 
 ### Implementation Timeline
-Day 1:
+Day 1: Host on Github pages
 
 
-Day 2:
+Day 2: Read documentation on d3.js
 
 
-Day 3:
-
-
-
-Day 4:
+Day 3: Fetch regular season stats for both players; parse and store data 
 
 
 
-Day 5:
+Day 4: Implement chart, establish clean and dynamic code to allow for comparison upon various fields
+
+
+
+Day 5: Style page, add links, source
 
 
 
@@ -54,7 +51,12 @@ Day 5:
 
 
 
+### Code Snippet
+![image](https://user-images.githubusercontent.com/6837172/91791893-4c180400-ebe2-11ea-9c97-0f954965afa6.png)
+
+
+
 ### (Bonus Features)
 
-![image](https://user-images.githubusercontent.com/6837172/91791893-4c180400-ebe2-11ea-9c97-0f954965afa6.png)
+
 
