@@ -58,7 +58,7 @@ Day 5: Style page, add links, source
 
 ### (Bonus Features)
 
-Allow to compare stats based on playoffs or regular season
+Allow stats comparison for playoffs
 
 
 
