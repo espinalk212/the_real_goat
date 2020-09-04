@@ -1,4 +1,4 @@
-# the_real_goat
+# The Real Goat
 
 
 ### Background and Overview 
@@ -9,7 +9,7 @@ There has been debates between basketball fans for years now in regards to who i
 ### Functionality and MVPs
 - Landing page
 
-- D3.js Chart
+- D3.js dynamic chart
 
 - Ability to compare regular season stats between Michael Jordan and LeBron James based on Points, Assists, Rebounds, and Turnovers
 
