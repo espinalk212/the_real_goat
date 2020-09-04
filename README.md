@@ -24,7 +24,7 @@ There has been debates between basketball fans for years now in regards to who i
 
 JS, CSS, Webpack, D3.js
 
-https://www.balldontlie.io/#introduction for regular season comparisons.
+https://www.balldontlie.io/ for player stat comparisons.
 
 
 
