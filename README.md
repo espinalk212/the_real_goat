@@ -16,9 +16,9 @@ There has been debates between basketball fans for years now in regards to who i
 
 
 
-### Wireframes 
+### Visual
 
-![image](https://user-images.githubusercontent.com/6837172/90341446-bc613b80-dfcd-11ea-9f8b-ebd67ea76fa3.png)
+![image](https://i.imgur.com/WfuZ5lP.png)
 
 ### Architecture and Technology
 
@@ -48,11 +48,36 @@ Day 5: Style page, add links, source
 
 
 ### Basic File Structure
+- src/
 
+  - playerStats/
+    - lebronSeasonStats.json
+    - jordanSeasonStats.json
+
+  - scripts/
+    - chart.js
+    - main.js
+
+  - styles/
+    - index.scss
+
+  - index.js
 
 
 ### Code Snippet
-![image](https://user-images.githubusercontent.com/6837172/91791893-4c180400-ebe2-11ea-9c97-0f954965afa6.png)
+index.js
+```Javascript
+document.addEventListener("DOMContentLoaded", () => {
+  let dropdownOption = "pts"
+  const main = document.getElementById("main");
+  let content = new Main(dropdownOption);
+  const dropdown = document.getElementById("category").onchange = function(){
+    dropdownOption = this.value
+    document.getElementById('d3-container').innerHTML = ''
+    content = new Main(dropdownOption)
+    
+  }
+```
 
 
 
