@@ -1,5 +1,7 @@
 import * as d3 from 'd3';
-import { svg } from 'd3';
+
+
+
 
 
 class Chart {
@@ -14,6 +16,7 @@ class Chart {
     .attr('width', this.width - this.margin.left - this.margin.right)
     .attr('viewBox', [0, 0, this.width, this.height ])
     
+    
 
     this.x = d3.scaleBand()
       .domain(d3.range(dataset1.length))
@@ -26,9 +29,13 @@ class Chart {
       .domain([0, chartHeightMax])
       .range([this.height - this.margin.bottom, this.margin.top]);
     
+    
+    
+
     this.svg
       .append("g")
       .attr("fill", "purple")
+      .attr("class", "lebron")
       .selectAll("lebron rect")
       .data(dataset1)
       .join("rect")
@@ -36,35 +43,71 @@ class Chart {
       .attr("y", (d) => this.y(d))
       .attr("height", (d, i) => this.y(0) - this.y(d))
       .attr("width", this.x.bandwidth(2))
-      .attr("class", "lebron rect")
-      .on("mouseover", function (d, i) {
-        d3.select(this).style("opacity", "0");
-        console.log(dataset1[i]);
+      
+      
+      
+    this.svg
+      .selectAll("g", "lebron")
+      .data(dataset1)
+      .enter()
+      .append("text")
+      .attr("class", "tooltiptext")
+      .attr("x", (d, i) => this.x(i))
+      .attr("y", (d) => this.y(d))
+      .text(function (d) {
+        return d;
       })
-      .on("mouseout", function () {
-        d3.select(this).style("opacity", "1");
-      });
+      .attr("text-anchor", "middle")
+      
+      
+      
+
+    // this.texts.attr("class", "value")
+    //   .attr("class", "tooltiptext")
+    //   .attr("x", (d, i) => this.x(i))
+    //   .attr("y", (d) => this.y(d))
+    //   .text(function (d) { return d  })
+    //   .attr("text-anchor", "middle")
+      
+      
+
+      
+
         
     this.svg
       .append("g")
       .attr("fill", "red")
-      .selectAll("mj-rect")
+      .selectAll("mj rect")
       .data(dataset2)
       .join("rect")
       .attr("x", (d, i) => this.x(i))
       .attr("y", (d) => this.y(d))
       .attr("height", (d, i) => this.y(0) - this.y(d))
       .attr("width", this.x.bandwidth())
-      .attr("class", "mj-rect")
-      .on('mouseover', function (d, i) {
-        d3.select(this)
-        .style("opacity", "0");
-        console.log(dataset2[i])
-      })
-      .on("mouseout", function () {
-        d3.select(this)
-        .style("opacity", "1")
-      });
+      .attr("class", "rect")
+      
+      
+      
+      
+
+    this.texts2 =
+      this.svg.selectAll("texts2")
+        .data(dataset2)
+        .enter()
+        .append("text");
+        
+
+    this.texts2.attr("class", "value")
+      .attr("class", "tooltiptext")
+      .attr("x", (d, i) => this.x(i))
+      .attr("y", (d) => this.y(d))
+      .text(function (d) { return d })
+      .attr("text-anchor", "middle")
+      
+      
+      
+      
+    
 
         
     this.xAxis = (g) => {
@@ -103,7 +146,7 @@ class Chart {
   }
 
   
-
+ 
 
 
 
